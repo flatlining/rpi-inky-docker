@@ -5,19 +5,38 @@
 Python 2 (579MB):
 
 ``` shell
-$ docker image build --tag rpi-inky:2 .
+docker image build --tag rpi-inky:2 .
 ```
 
 Python 3 (594MB):
 
 ``` shell
-$ docker image build --tag rpi-inky:3 --build-arg PYTHONVER=3 .
+docker image build --tag rpi-inky:3 --build-arg PYTHONVER=3 .
 ```
 
 ## Run
 
+One time:
+
 ``` shell
-$ docker run -it --privileged --rm rpi-inky:2 /bin/bash
+docker run -it --privileged --rm rpi-inky:2 /bin/bash
+```
+
+Persisted:
+
+``` shell
+docker run -it --privileged --name inky rpi-inky:2 /bin/bash
+docker container restart inky
+docker container exec -it -u inky -w /home/inky inky /bin/bash
+docker container stop inky
+docker container rm inky
+```
+
+## Create user
+
+```
+adduser inky
+usermod -a -G sudo inky
 ```
 
 ## Test
@@ -31,6 +50,7 @@ inky = InkyPHAT("black")
 img = Image.open(urlopen(url))
 inky.set_image(img)
 inky.show()
+
 ```
 
 ## References
