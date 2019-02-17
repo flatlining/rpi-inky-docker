@@ -5,13 +5,13 @@
 Python 2 (579MB):
 
 ``` shell
-$ docker image build --tag rpi-inky:2 -f Dockerfile.python2 .
+$ docker image build --tag rpi-inky:2 .
 ```
 
 Python 3 (594MB):
 
 ``` shell
-$ docker image build --tag rpi-inky:3 -f Dockerfile.python3 .
+$ docker image build --tag rpi-inky:3 --build-arg PYTHONVER=3 .
 ```
 
 ## Run
