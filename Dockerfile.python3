@@ -1,0 +1,21 @@
+FROM raspbian/stretch
+
+LABEL maintainer="mschertel@gmail.com"
+
+RUN apt-get update && apt-get upgrade -y \
+ && apt-get install -y \
+    raspi-gpio \
+    python3-pip \
+    python3-rpi.gpio \
+    python3-spidev \
+    python3-smbus \
+    python3-numpy \
+    python3-pil \
+    python3-lxml \
+    python3-smbus \
+ && pip3 install einky \
+ && apt-get autoclean -y && apt-get autoremove -y && apt-get clean && apt-get remove && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /root
+
+CMD ["python3"]

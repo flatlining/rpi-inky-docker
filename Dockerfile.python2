@@ -1,0 +1,21 @@
+FROM raspbian/stretch
+
+LABEL maintainer="mschertel@gmail.com"
+
+RUN apt-get update && apt-get upgrade -y \
+ && apt-get install -y \
+    raspi-gpio \
+    python-pip \
+    python-rpi.gpio \
+    python-spidev \
+    python-smbus \
+    python-numpy \
+    python-pil \
+    python-lxml \
+    python-smbus \
+ && pip2 install einky \
+ && apt-get autoclean -y && apt-get autoremove -y && apt-get clean && apt-get remove && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /root
+
+CMD ["python2"]
