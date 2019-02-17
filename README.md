@@ -22,18 +22,15 @@ $ docker run -it --privileged --rm rpi-inky:2 /bin/bash
 
 ## Test
 
-``` shell
-$ wget https://github.com/pimoroni/inky/raw/master/examples/phat/resources/InkypHAT-212x104-bw.png
-```
-
 ``` python
+url = "https://github.com/pimoroni/inky/raw/master/examples/phat/resources/InkypHAT-212x104-bw.png"
 from inky import InkyPHAT
-inky_display = InkyPHAT("black")
 from PIL import Image
-img = Image.open("/root/InkypHAT-212x104-bw.png")
-inky_display.set_image(img)
-inky_display.show()
-
+from six.moves.urllib.request import urlopen
+inky = InkyPHAT("black")
+img = Image.open(urlopen(url))
+inky.set_image(img)
+inky.show()
 ```
 
 ## References
@@ -44,3 +41,4 @@ inky_display.show()
 - https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md
 - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 - https://vsupalov.com/docker-arg-env-variable-guide/
+- https://python-future.org/compatible_idioms.html#urllib-module
