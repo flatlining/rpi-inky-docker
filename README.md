@@ -16,27 +16,8 @@ docker image build --tag rpi-inky:3 --build-arg PYTHONVER=3 .
 
 ## Run
 
-One time:
-
 ``` shell
-docker run -it --privileged --rm rpi-inky:2 /bin/bash
-```
-
-Persisted:
-
-``` shell
-docker run -it --privileged --name inky rpi-inky:2 /bin/bash
-docker container restart inky
-docker container exec -it -u inky -w /home/inky inky /bin/bash
-docker container stop inky
-docker container rm inky
-```
-
-## Create user
-
-```
-adduser inky
-usermod -a -G sudo inky
+docker run -it --privileged --rm rpi-inky:2
 ```
 
 ## Test
