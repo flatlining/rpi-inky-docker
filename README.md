@@ -1,5 +1,7 @@
 # rpi-inky-docker
 
+Docker image to use with the [Inky pHAT](https://shop.pimoroni.com/products/inky-phat) and [Inky wHAT](https://shop.pimoroni.com/products/inky-what) using the [inky](https://github.com/pimoroni/inky) Python library, more information on the [Getting Started](https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-inky-phat) guide.
+
 ## Build
 
 Python 2 (579MB):
@@ -14,13 +16,13 @@ Python 3 (594MB):
 docker image build --tag rpi-inky:3 --build-arg PYTHONVER=3 .
 ```
 
-## Run
+### Run
 
 ``` shell
 docker run -it --privileged --rm rpi-inky:2
 ```
 
-## Test
+### Test
 
 ``` python
 url = "https://github.com/pimoroni/inky/raw/master/examples/phat/resources/InkypHAT-212x104-bw.png"
@@ -33,6 +35,10 @@ inky.set_image(img)
 inky.show()
 
 ```
+
+## TO-DO
+
+- Run without `root`
 
 ## References
 
